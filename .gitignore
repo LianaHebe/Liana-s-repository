@@ -2,3 +2,5 @@
 /target
 .classpath
 .project
+
+src/test/java/com/LoginTest.java

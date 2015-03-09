@@ -16,7 +16,7 @@ import org.openqa.selenium.WebDriver;
 import com.requirements.Application;
 import com.steps.EndUserSteps;
 
-@Story(Application.Search.NewVacationRequestTest.class)
+@Story(Application.Vacations.NewVacationRequestTest.class)
 @RunWith(ThucydidesRunner.class)
 public class NewVacationRequestTest {
 
@@ -27,7 +27,7 @@ public class NewVacationRequestTest {
     public Pages pages;
 
     @Steps
-    public static EndUserSteps endUser;
+    public EndUserSteps endUser;
 
     /*@Issue("#WIKI-1")
     @Test
@@ -52,7 +52,7 @@ public class NewVacationRequestTest {
 		endUser.goToNewVacationRequest();
     }
     
-    @Test
+//    @Test
     public void test1(){
     	
     }

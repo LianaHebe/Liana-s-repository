@@ -54,12 +54,17 @@ public class EndUserSteps extends ScenarioSteps {
 	public void goToNewVacationRequest(){
 		sideMenuPageObject.goToNewVacationRequest();
 	}
+	
+	@Step
+	public void goToVacationTracker() {
+		sideMenuPageObject.goToVacationTracker();
+	}
 
 	@Step
     public void signIn() {    	
         enterUserNameAndPassword();
         vacationsPage.clickSubmit();
-        vacationsPage.clickVacation();
+        vacationsPage.goToVacations();
         
     }
 }
