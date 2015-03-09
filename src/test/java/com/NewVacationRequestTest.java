@@ -1,14 +1,14 @@
 package com;
 
-import net.thucydides.core.annotations.Issue;
+import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.ManagedPages;
-import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Story;
 import net.thucydides.core.pages.Pages;
-import net.thucydides.core.annotations.Managed;
 import net.thucydides.junit.runners.ThucydidesRunner;
 
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -16,9 +16,9 @@ import org.openqa.selenium.WebDriver;
 import com.requirements.Application;
 import com.steps.EndUserSteps;
 
-@Story(Application.Search.Login.class)
+@Story(Application.Search.NewVacationRequestTest.class)
 @RunWith(ThucydidesRunner.class)
-public class LoginTest {
+public class NewVacationRequestTest {
 
     @Managed(uniqueSession = true)
     public WebDriver webdriver;
@@ -27,7 +27,7 @@ public class LoginTest {
     public Pages pages;
 
     @Steps
-    public EndUserSteps endUser;
+    public static EndUserSteps endUser;
 
     /*@Issue("#WIKI-1")
     @Test
@@ -43,9 +43,17 @@ public class LoginTest {
 		endUser.looks_for("ana");		
     }*/
     
-    @Test
-    public void signInUsernameAndPassword() {
+//    @Test
+    @Before
+    public void signInUsernameAndPasswordAndGoToNewVacationRequest() {
         endUser.is_the_home_page();
-		endUser.signIn();		
+		endUser.signIn();
+		endUser.goToVacations();
+		endUser.goToNewVacationRequest();
+    }
+    
+    @Test
+    public void test1(){
+    	
     }
 } 
