@@ -9,5 +9,6 @@ public class Application {
 //        public class SearchByKeyword {}
 //        public class SearchByMultipleKeywords {}
         public class NewVacationRequestTest {}
+
     }
 }
