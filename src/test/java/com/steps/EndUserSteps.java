@@ -40,5 +40,7 @@ public class EndUserSteps extends ScenarioSteps {
     public void signIn() {    	
         enterUserNameAndPassword();
         vacationsPage.clickSubmit();
+        vacationsPage.clickVacation();
+        
     }
 }
