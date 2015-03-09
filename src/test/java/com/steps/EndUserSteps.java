@@ -1,10 +1,11 @@
 package com.steps;
 
+import com.dataclasses.MyLoginInfo;
 import com.pages.VacationsPage;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
-
 import static ch.lambdaj.Lambda.join;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
@@ -15,9 +16,9 @@ public class EndUserSteps extends ScenarioSteps {
     VacationsPage vacationsPage;
 
     @Step
-    public void enters(String username,String password) {
-        vacationsPage.enter_username(username);
-        vacationsPage.enter_password(password);
+    public void enterUserNameAndPassword() {
+        vacationsPage.enter_username(MyLoginInfo.username);
+        vacationsPage.enter_password(MyLoginInfo.password);
     }
 
     @Step
@@ -36,8 +37,8 @@ public class EndUserSteps extends ScenarioSteps {
     }
 
     @Step
-    public void signIn(String userName, String password) {
-        enters(userName, password);
+    public void signIn() {    	
+        enterUserNameAndPassword();
         vacationsPage.clickSubmit();
     }
 }

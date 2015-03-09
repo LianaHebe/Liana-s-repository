@@ -46,6 +46,6 @@ public class LoginTest {
     @Test
     public void signInUsernameAndPassword() {
         endUser.is_the_home_page();
-		endUser.signIn("Mihaela","training1");		
+		endUser.signIn();		
     }
 } 
