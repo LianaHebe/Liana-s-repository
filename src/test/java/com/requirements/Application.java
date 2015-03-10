@@ -8,5 +8,7 @@ public class Application {
     public class Vacations {
         public class NewVacationRequestTest {}
         public class VacationTrackerTest {}
+        public class MyRequestsTest {}
+        public class MyFreeDaysTest {}
     }
 }
