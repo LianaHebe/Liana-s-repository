@@ -1,6 +1,8 @@
 package com.steps;
 
 import com.dataclasses.MyLoginInfo;
+import com.pages.NewVacationRequestPageObject;
+import com.pages.SideMenuPageObject;
 import com.pages.VacationsPage;
 
 import net.thucydides.core.annotations.Step;
@@ -13,34 +15,59 @@ import static org.hamcrest.Matchers.hasItem;
 
 public class EndUserSteps extends ScenarioSteps {
 
-    VacationsPage vacationsPage;
+	VacationsPage vacationsPage;
+	SideMenuPageObject sideMenuPageObject;
+	NewVacationRequestPageObject newVacationRequestPageObject;
 
-    @Step
-    public void enterUserNameAndPassword() {
-        vacationsPage.enter_username(MyLoginInfo.username);
-        vacationsPage.enter_password(MyLoginInfo.password);
-    }
+	@Step
+	public void enterUserNameAndPassword() {
+		vacationsPage.enter_username(MyLoginInfo.username);
+		vacationsPage.enter_password(MyLoginInfo.password);
+	}
 
-    @Step
-    public void starts_search() {
-        vacationsPage.clickSubmit();
-    }
+	@Step
+	public void starts_search() {
+		vacationsPage.clickSubmit();
+	}
 
-    @Step
-    public void should_see_definition(String definition) {
-        assertThat(vacationsPage.getDefinitions(), hasItem(containsString(definition)));
-    }
+	@Step
+	public void should_see_definition(String definition) {
+		assertThat(vacationsPage.getDefinitions(),
+				hasItem(containsString(definition)));
+	}
 
-    @Step
-    public void is_the_home_page() {
-        vacationsPage.open();
-    }
+	@Step
+	public void is_the_home_page() {
+		vacationsPage.open();
+	}
 
-    @Step
+	@Step
+	public void goToVacations() {
+		vacationsPage.goToVacations();
+	}
+
+//	@Step
+//	public void signIn() {
+//		enterUserNameAndPassword();
+//		vacationsPage.clickSubmit();
+//	}
+	
+	@Step
+	public void goToNewVacationRequest(){
+		sideMenuPageObject.goToNewVacationRequest();
+	}
+
+	@Step
     public void signIn() {    	
         enterUserNameAndPassword();
         vacationsPage.clickSubmit();
-        vacationsPage.clickVacation();
+//        vacationsPage.clickVacation();
         
     }
+	
+	/*@Step
+	public void selectVacationWithoutPayment(){
+		newVacationRequestPageObject.selectVacationWithoutPayment();
+	}*/
+
 }

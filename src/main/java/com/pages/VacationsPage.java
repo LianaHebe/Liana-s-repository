@@ -23,6 +23,10 @@ public class VacationsPage extends PageObject {
 
     @FindBy(css="[value='Sign In']")
     private WebElementFacade signIn;
+    
+    @FindBy(xpath="//a[contains(@href,'http://192.168.1.68:9090/vacation')]")
+    private WebElementFacade vacationsHeaderLink;
+    
 
    // @FindBy(xpath="//a[contains(@href,'new-request')]")
     @FindBy(css="a[href*='vacation']")
@@ -38,6 +42,10 @@ public class VacationsPage extends PageObject {
     
     public void clickSubmit() {
         signIn.click();
+    }
+    
+    public void goToVacations(){
+    	vacationsHeaderLink.click();
     }
 
     public void clickVacation(){
