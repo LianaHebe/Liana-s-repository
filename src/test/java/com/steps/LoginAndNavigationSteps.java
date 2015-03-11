@@ -1,26 +1,35 @@
 package com.steps;
 
-import com.dataclasses.MyLoginInfo;
-import com.pages.SideMenuPageObject;
-import com.pages.VacationsPage;
-
-import net.thucydides.core.annotations.Step;
-import net.thucydides.core.pages.Pages;
-import net.thucydides.core.steps.ScenarioSteps;
-import static ch.lambdaj.Lambda.join;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasItem;
+import net.thucydides.core.annotations.Step;
+import net.thucydides.core.steps.ScenarioSteps;
 
-public class EndUserSteps extends ScenarioSteps {
+import com.dataclasses.MyLoginInfo;
+import com.pages.NewVacationRequestPageObject;
+import com.pages.SideMenuPageObject;
+import com.pages.VacationsPage;
 
+public class LoginAndNavigationSteps extends ScenarioSteps {
+	
+	private static final long serialVersionUID = 546423554344803636L;
 	VacationsPage vacationsPage;
 	SideMenuPageObject sideMenuPageObject;
 
+	NewVacationRequestPageObject newVacationRequestPageObject;
+
+
+	@Step
+	public void enterDMUserNameAndPassword() {
+		vacationsPage.enter_username(MyLoginInfo.DM_USERNAME);
+		vacationsPage.enter_password(MyLoginInfo.DM_PASSWORD);
+	}
+	
 	@Step
 	public void enterUserNameAndPassword() {
-		vacationsPage.enter_username(MyLoginInfo.username);
-		vacationsPage.enter_password(MyLoginInfo.password);
+		vacationsPage.enter_username(MyLoginInfo.USERNAME);
+		vacationsPage.enter_password(MyLoginInfo.PASSWORD);
 	}
 
 	@Step
@@ -43,17 +52,12 @@ public class EndUserSteps extends ScenarioSteps {
 	public void goToVacations() {
 		vacationsPage.goToVacations();
 	}
-
-//	@Step
-//	public void signIn() {
-//		enterUserNameAndPassword();
-//		vacationsPage.clickSubmit();
-//	}
 	
 	@Step
 	public void goToNewVacationRequest(){
 		sideMenuPageObject.goToNewVacationRequest();
 	}
+
 	
 	@Step
 	public void goToVacationTracker() {
@@ -61,10 +65,15 @@ public class EndUserSteps extends ScenarioSteps {
 	}
 
 	@Step
-    public void signIn() {    	
+    public void signInAsDM() {    	
+        enterDMUserNameAndPassword();
+        vacationsPage.clickSubmit();    
+    }
+
+	@Step
+    public void signInAsBasicUser() {    	
         enterUserNameAndPassword();
         vacationsPage.clickSubmit();
-        vacationsPage.goToVacations();
-        
-    }
+	}
+
 }

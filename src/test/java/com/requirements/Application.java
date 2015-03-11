@@ -6,10 +6,7 @@ public class Application {
 	
     @Feature
     public class Vacations {
-//        public class SearchByKeyword {}
-//        public class SearchByMultipleKeywords {}
         public class NewVacationRequestTest {}
         public class VacationTrackerTest {}
-
     }
 }

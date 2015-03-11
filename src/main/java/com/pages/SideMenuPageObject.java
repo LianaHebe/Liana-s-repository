@@ -19,4 +19,5 @@ public class SideMenuPageObject extends PageObject {
 	public void goToVacationTracker() {
 		vacationTracker.click();		
 	}	
+
 }
