@@ -71,6 +71,11 @@ public class LoginAndNavigationSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public void goToFreeDaysHistory(){
+		sideMenuPageObject.goToFreeDaysHistory();
+	}
+	
+	@Step
 	public void goToVacationTracker() {
 		sideMenuPageObject.goToVacationTracker();
 	}

@@ -8,18 +8,16 @@ import org.openqa.selenium.WebElement;
 
 import com.pages.MyRequestsPage;
 
-import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
-import net.thucydides.core.webdriver.WebdriverInstances;
 
 public class MyRequestsSteps extends ScenarioSteps {
 	private WebDriver webdriver;
-		
+
 	MyRequestsPage myRequestsPage;
-	
-	@Step	
-	public void testIfEvozonLogoIsPresent(){
+
+	@Step
+	public void testIfEvozonLogoIsPresent() {
 		webdriver = getDriver();
 		WebElement evozonLogo;
 		try {
@@ -29,26 +27,26 @@ public class MyRequestsSteps extends ScenarioSteps {
 			evozonLogo = null;
 		}
 
-		Assert.assertTrue(evozonLogo != null);		
+		Assert.assertTrue(evozonLogo != null);
 	}
-	
-	@Step
-	public void clickCheckBoxVacationType(String vacationType){
-		myRequestsPage.clickCheckBoxVacationType(vacationType);
-	}	
 
 	@Step
-	public void clickCheckBoxVacationStatus(String vacationStatus){
+	public void clickCheckBoxVacationType(String vacationType) {
+		myRequestsPage.clickCheckBoxVacationType(vacationType);
+	}
+
+	@Step
+	public void clickCheckBoxVacationStatus(String vacationStatus) {
 		myRequestsPage.clickCheckBoxVacationStatus(vacationStatus);
-	}	
-	
+	}
+
 	@Step
-	public void clickCheckBoxDaysNumber(String daysNumber){
+	public void clickCheckBoxDaysNumber(String daysNumber) {
 		myRequestsPage.clickCheckBoxDaysNumber(daysNumber);
-	}	
-	
+	}
+
 	@Step
-	public void clickApplyButton(){
+	public void clickApplyButton() {
 		myRequestsPage.clickApplyButton();
 	}
 }

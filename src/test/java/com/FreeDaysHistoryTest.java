@@ -5,7 +5,8 @@ import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Story;
 import net.thucydides.core.pages.Pages;
-import net.thucydides.junit.runners.ThucydidesRunner;
+import net.thucydides.junit.annotations.UseTestDataFrom;
+import net.thucydides.junit.runners.ThucydidesParameterizedRunner;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,17 +15,17 @@ import org.openqa.selenium.WebDriver;
 
 import com.dataclasses.MyLoginInfo;
 import com.requirements.Application;
+import com.steps.FreeDaysHistorySteps;
 import com.steps.LoginAndNavigationSteps;
-import com.steps.MyFreeDaysSteps;
 
-@Story(Application.Vacations.MyFreeDaysTest.class)
-@RunWith(ThucydidesRunner.class)
-public class MyFreeDaysTest {
+@Story(Application.Vacations.MyRequestsTest.class)
+@RunWith(ThucydidesParameterizedRunner.class)
+@UseTestDataFrom("resources/Filters2.csv")
+public class FreeDaysHistoryTest {
 
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
 
-	// @ManagedPages(defaultUrl = "http://192.168.1.68:9090/login")
 	@ManagedPages(defaultUrl = MyLoginInfo.BASE_URL)
 	public Pages pages;
 
@@ -32,18 +33,23 @@ public class MyFreeDaysTest {
 	public LoginAndNavigationSteps loginAndNavigationSteps;
 
 	@Steps
-	public MyFreeDaysSteps myFreeDaysSteps;
+	public FreeDaysHistorySteps freeDaysHistory;
 
 	@Before
 	public void signInUsernameAndPasswordAndGoToNewVacationRequest() {
 		loginAndNavigationSteps.is_the_home_page();
 		loginAndNavigationSteps.signInAsBasicUser();
 		loginAndNavigationSteps.goToVacations();
-		loginAndNavigationSteps.goToMyFreeDays();
+		loginAndNavigationSteps.goToFreeDaysHistory();
 	}
 
+	String VacationType, DaysNumber, Operation;
+	
 	@Test
-	public void myFreeDays() {
-		myFreeDaysSteps.clickBackButton();
-	}
+	public void myFreeDaysHistory() {
+		freeDaysHistory.selectFilterItems(VacationType);
+		freeDaysHistory.selectFilterItems(DaysNumber);
+		freeDaysHistory.selectFilterItems(Operation);
+		freeDaysHistory.clickApplyButton();		
+	}	
 }

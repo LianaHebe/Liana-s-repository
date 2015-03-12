@@ -10,5 +10,7 @@ public class Application {
         public class VacationTrackerTest {}
         public class MyRequestsTest {}
         public class MyFreeDaysTest {}
+        public class FreeDaysHistoryTest{}
+    
     }
 }
