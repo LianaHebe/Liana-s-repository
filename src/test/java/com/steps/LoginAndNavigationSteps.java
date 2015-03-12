@@ -7,7 +7,7 @@ import static org.hamcrest.Matchers.hasItem;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-import com.dataclasses.MyLoginInfo;
+import com.dataclasses.VacationAppConstants;
 import com.pages.NewVacationRequestPageObject;
 import com.pages.SideMenuPageObject;
 import com.pages.VacationsPage;
@@ -23,14 +23,14 @@ public class LoginAndNavigationSteps extends ScenarioSteps {
 
 	@Step
 	public void enterDMUserNameAndPassword() {
-		vacationsPage.enter_username(MyLoginInfo.DM_USERNAME);
-		vacationsPage.enter_password(MyLoginInfo.DM_PASSWORD);
+		vacationsPage.enter_username(VacationAppConstants.DM_USERNAME);
+		vacationsPage.enter_password(VacationAppConstants.DM_PASSWORD);
 	}
 	
 	@Step
 	public void enterUserNameAndPassword() {
-		vacationsPage.enter_username(MyLoginInfo.USERNAME);
-		vacationsPage.enter_password(MyLoginInfo.PASSWORD);
+		vacationsPage.enter_username(VacationAppConstants.USERNAME);
+		vacationsPage.enter_password(VacationAppConstants.PASSWORD);
 	}
 
 	@Step
