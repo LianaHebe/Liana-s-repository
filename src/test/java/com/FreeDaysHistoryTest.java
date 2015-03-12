@@ -13,7 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-import com.dataclasses.MyLoginInfo;
+import com.dataclasses.VacationAppConstants;
 import com.requirements.Application;
 import com.steps.FreeDaysHistorySteps;
 import com.steps.LoginAndNavigationSteps;
@@ -26,7 +26,7 @@ public class FreeDaysHistoryTest {
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
 
-	@ManagedPages(defaultUrl = MyLoginInfo.BASE_URL)
+	@ManagedPages(defaultUrl = VacationAppConstants.BASE_URL)
 	public Pages pages;
 
 	@Steps

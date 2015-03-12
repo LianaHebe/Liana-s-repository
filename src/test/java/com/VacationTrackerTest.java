@@ -14,6 +14,7 @@ import net.thucydides.junit.runners.ThucydidesRunner;
 
 import com.requirements.Application;
 import com.steps.LoginAndNavigationSteps;
+import com.steps.VacationTrackerSteps;
 
 @Story(Application.Vacations.VacationTrackerTest.class)
 @RunWith(ThucydidesRunner.class)
@@ -21,12 +22,12 @@ public class VacationTrackerTest {
 	
 	@Managed(uniqueSession = true)
     public WebDriver webdriver;
-
     @ManagedPages(defaultUrl = "http://192.168.1.68:9090/login")
-    public Pages pages;
-    
+    public Pages pages;    
     @Steps
     public LoginAndNavigationSteps loginAndNavigationSteps;
+    @Steps
+    public VacationTrackerSteps vacationTrackerSteps;
 	
     @Before
     public void signInUsernameAndPasswordAndGoToNewVacationRequest() {
@@ -34,12 +35,16 @@ public class VacationTrackerTest {
 		loginAndNavigationSteps.signInAsDM();
 		loginAndNavigationSteps.goToVacations();
 		loginAndNavigationSteps.goToVacationTracker();
+		webdriver.manage().window().maximize();
     }
     
     @Test
     public void testStartDateLaterThanEndDate(){
-    	
+//    	System.out.println("Setting start date to May 21, 2013. Check if correct.");
+    	vacationTrackerSteps.setStartDate(3, 7, 2015);
+    	try {
+			Thread.sleep(5000L);
+		} catch (Exception e) {
+		}    	
     }
-	
-
 }

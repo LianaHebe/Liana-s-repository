@@ -1,6 +1,7 @@
 package com.dataclasses;
 
-public class MyLoginInfo {
+public class VacationAppConstants {
+
 
 	public static final String BASE_URL = "http://192.168.1.68:9090/login";
 
@@ -9,5 +10,6 @@ public class MyLoginInfo {
 
 	public static final String USERNAME = "Mihaela";
 	public static final String PASSWORD = "training1";
+
 
 }
