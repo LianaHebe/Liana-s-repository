@@ -3,6 +3,7 @@ package com.steps;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasItem;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
@@ -11,12 +12,12 @@ import com.pages.NewVacationRequestPageObject;
 import com.pages.SideMenuPageObject;
 import com.pages.VacationsPage;
 
-public class LoginAndNavigationSteps extends ScenarioSteps {
-	
+public class LoginAndNavigationSteps extends ScenarioSteps {	
+
 	private static final long serialVersionUID = 546423554344803636L;
+	
 	VacationsPage vacationsPage;
 	SideMenuPageObject sideMenuPageObject;
-
 	NewVacationRequestPageObject newVacationRequestPageObject;
 
 
@@ -46,8 +47,9 @@ public class LoginAndNavigationSteps extends ScenarioSteps {
 	@Step
 	public void is_the_home_page() {
 		vacationsPage.open();
+		getDriver().manage().window().maximize();
 	}
-
+	
 	@Step
 	public void goToVacations() {
 		vacationsPage.goToVacations();
@@ -58,6 +60,15 @@ public class LoginAndNavigationSteps extends ScenarioSteps {
 		sideMenuPageObject.goToNewVacationRequest();
 	}
 
+	@Step
+	public void goToMyRequests(){
+		sideMenuPageObject.goToMyRequests();
+	}
+	
+	@Step
+	public void goToMyFreeDays(){
+		sideMenuPageObject.goToMyFreeDays();
+	}
 	
 	@Step
 	public void goToVacationTracker() {

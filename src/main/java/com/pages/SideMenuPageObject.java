@@ -12,6 +12,12 @@ public class SideMenuPageObject extends PageObject {
 	@FindBy(xpath="//a[contains(@href,'vacation-tracker')]")
 	private WebElementFacade vacationTracker;
 	
+	@FindBy(css="a[href*='my-requests']")	
+	private WebElementFacade myRequests;
+	
+	@FindBy(css="a[href*='my-free-days']")
+	private WebElementFacade myFreeDays;
+	
 	public void goToNewVacationRequest(){
 		newVacationRequestLink.click();
 	}
@@ -19,5 +25,13 @@ public class SideMenuPageObject extends PageObject {
 	public void goToVacationTracker() {
 		vacationTracker.click();		
 	}	
+	
+	public void goToMyRequests() {
+		myRequests.click();		
+	}
+	
+	public void goToMyFreeDays(){
+		myFreeDays.click();
+	}
 
 }

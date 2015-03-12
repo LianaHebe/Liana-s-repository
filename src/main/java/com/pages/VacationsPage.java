@@ -25,8 +25,9 @@ public class VacationsPage extends PageObject {
     private WebElementFacade signIn;
     
     @FindBy(xpath="//a[contains(@href,'http://192.168.1.68:9090/vacation')]")
+    //@FindBy(xpath="//a[contains(@href,MyLoginInfo.BASE_URL)]")
     private WebElementFacade vacationsHeaderLink;
-        
+         
     public void enter_username(String user) {
         username.type(user);
     }

@@ -1,6 +1,8 @@
 package com.dataclasses;
 
-public class MyLoginInfo {	
+public class MyLoginInfo {
+	
+	public static final String BASE_URL="http://192.168.1.68:9090/vacation";	
 	public static final String DM_USERNAME="virgilsuteu";
 	public static final String DM_PASSWORD="evozonTest";	
 	public static final String USERNAME="Mihaela";
