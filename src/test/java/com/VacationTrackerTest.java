@@ -41,7 +41,7 @@ public class VacationTrackerTest {
     @Test
     public void testStartDateLaterThanEndDate(){
 //    	System.out.println("Setting start date to May 21, 2013. Check if correct.");
-    	vacationTrackerSteps.setStartDate(3, 7, 2015);
+    	vacationTrackerSteps.setStartDate(3, 7, 2);
     	try {
 			Thread.sleep(5000L);
 		} catch (Exception e) {

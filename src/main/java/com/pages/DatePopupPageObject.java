@@ -76,29 +76,28 @@ public class DatePopupPageObject extends PageObject {
 				500L);
 		WebElement datePopup = waitForDatePopup
 				.until(ExpectedConditions.visibilityOfElementLocated(By
-						.xpath("//div[contains(@class, 'Zebra_DatePicker') and not(contains(@style,'display: none'))]")));
-		// div[not(contains(@style,'display: none'))]/
+						.xpath("//div[contains(@class,'Zebra_DatePicker') and (contains(@style,'display: block'))]")));		
 		WebDriverWait waitForPopupTitle = new WebDriverWait(webdriver, 5000L,
 				500L);
-		datePopupTitle = waitForPopupTitle.until(ExpectedConditions
-				.visibilityOfElementLocated(By
-						.xpath("//td[contains(@class,'dp_caption')]")));
+		datePopupTitle = waitForPopupTitle
+				.until(ExpectedConditions.visibilityOfElementLocated(By
+						.xpath("//div[contains(@class,'Zebra_DatePicker') and (contains(@style,'display: block'))]/table/tbody/tr/td[contains(@class,'dp_caption')]")));
 
 		WebDriverWait waitForNextAndPreviousButtons = new WebDriverWait(
 				webdriver, 5000L, 500L);
 		WebElement nextButton = waitForNextAndPreviousButtons
 				.until(ExpectedConditions.visibilityOfElementLocated(By
-						.xpath("//td[contains(@class,'dp_next')]")));
+						.xpath("//div[contains(@class,'Zebra_DatePicker') and (contains(@style,'display: block'))]/table/tbody/tr/td[contains(@class,'dp_next')]")));
 		WebElement previousButton = waitForNextAndPreviousButtons
 				.until(ExpectedConditions.visibilityOfElementLocated(By
-						.xpath("//td[contains(@class,'dp_previous')]")));
+						.xpath("//div[contains(@class,'Zebra_DatePicker') and (contains(@style,'display: block'))]/table/tbody/tr/td[contains(@class,'dp_previous')]")));
 		String oldMonthAndYear = datePopupTitle.getText();
 
 		WebDriverWait waitForOriginalDate = new WebDriverWait(webdriver, 5000L,
 				500L);
 		WebElement originalDateFromPopup = waitForOriginalDate
 				.until(ExpectedConditions.visibilityOfElementLocated(By
-						.xpath("//td[contains(@class,'dp_selected')]")));
+						.xpath("//div[contains(@class, 'Zebra_DatePicker') and contains(@style, 'display: block')]/table[@class='dp_daypicker']/tbody/tr/td[contains(@class,'dp_selected')]")));
 		String oldDayOfMonth = originalDateFromPopup.getText();
 
 		Date oldDate = sdfOldDate.parse(oldMonthAndYear + ", " + oldDayOfMonth);
@@ -123,7 +122,7 @@ public class DatePopupPageObject extends PageObject {
 					screen = Screen.YearsScreen;
 					List<WebElement> yearCells = genericWait
 							.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By
-									.xpath("//table[contains(@class,'dp_yearpicker')]/tbody/tr/td")));
+									.xpath("//div[contains(@class,'Zebra_DatePicker') and (contains(@style,'display: block'))]/table[contains(@class,'dp_yearpicker')]/tbody/tr/td")));
 					forYearCells: for (WebElement webElement : yearCells) {
 						if (Integer.decode(webElement.getText()).intValue() == desiredDateCalendar
 								.get(desiredDateCalendar.YEAR)) {
@@ -145,7 +144,7 @@ public class DatePopupPageObject extends PageObject {
 
 				List<WebElement> monthCells = genericWait
 						.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By
-								.xpath("//table[contains(@class,'dp_monthpicker')]/tbody/tr/td")));
+								.xpath("//div[contains(@class, 'Zebra_DatePicker') and (contains(@style, 'display: block'))]/table[contains(@class,'dp_monthpicker')]/tbody/tr/td")));
 				WebElement januaryCell = monthCells.get(0);
 				WebElement februaryCell = monthCells.get(1);
 				WebElement marchCell = monthCells.get(2);
@@ -198,7 +197,7 @@ public class DatePopupPageObject extends PageObject {
 				}
 				List<WebElement> dayCells = genericWait
 						.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By
-								.xpath("//table[contains(@class,'dp_daypicker')]/tbody/tr/td[not(@class='dp_not_in_month')]")));
+								.xpath("//div[contains(@class,'Zebra_DatePicker') and (contains(@style,'display: block'))]/table[contains(@class,'dp_daypicker')]/tbody/tr/td[not(@class='dp_not_in_month')]")));
 				int actualDayValue = desiredDateCalendar
 						.get(desiredDateCalendar.DAY_OF_MONTH);
 				for (WebElement webElement : dayCells) {
@@ -209,6 +208,7 @@ public class DatePopupPageObject extends PageObject {
 						break;
 					}
 				}
+
 				break whileDateSearch;
 
 			} else {
@@ -222,7 +222,7 @@ public class DatePopupPageObject extends PageObject {
 
 					List<WebElement> yearCells = genericWait
 							.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By
-									.xpath("//table[contains(@class,'dp_yearpicker')]/tbody/tr/td")));
+									.xpath("//div[contains(@class,'Zebra_DatePicker') and (contains(@style,'display: block'))]/table[contains(@class,'dp_yearpicker')]/tbody/tr/td")));
 					forYearCells: for (WebElement webElement : yearCells) {
 						if (Integer.decode(webElement.getText()).intValue() == desiredDateCalendar
 								.get(desiredDateCalendar.YEAR)) {
@@ -244,7 +244,7 @@ public class DatePopupPageObject extends PageObject {
 
 				List<WebElement> monthCells = genericWait
 						.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By
-								.xpath("//table[contains(@class,'dp_monthpicker')]/tbody/tr/td")));
+								.xpath("//div[contains(@class,'Zebra_DatePicker') and (contains(@style,'display: block'))]/table[contains(@class,'dp_monthpicker')]/tbody/tr/td")));
 				WebElement januaryCell = monthCells.get(0);
 				WebElement februaryCell = monthCells.get(1);
 				WebElement marchCell = monthCells.get(2);
@@ -297,7 +297,8 @@ public class DatePopupPageObject extends PageObject {
 				}
 				List<WebElement> dayCells = genericWait
 						.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By
-								.xpath("//table[contains(@class,'dp_daypicker')]/tbody/tr/td[not(@class='dp_not_in_month')]")));
+								.xpath("//div[contains(@class,'Zebra_DatePicker') and contains(@style,'display: block')]/table[contains(@class,'dp_daypicker')]/tbody/tr/td[not(@class='dp_not_in_month')]")));
+
 				int actualDayValue = desiredDateCalendar
 						.get(desiredDateCalendar.DAY_OF_MONTH);
 				for (WebElement webElement : dayCells) {
@@ -308,7 +309,9 @@ public class DatePopupPageObject extends PageObject {
 						break;
 					}
 				}
+
 				break whileDateSearch;
+
 			}
 		}
 	}
