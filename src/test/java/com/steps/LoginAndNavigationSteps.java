@@ -20,7 +20,6 @@ public class LoginAndNavigationSteps extends ScenarioSteps {
 	SideMenuPageObject sideMenuPageObject;
 	NewVacationRequestPageObject newVacationRequestPageObject;
 
-
 	@Step
 	public void enterDMUserNameAndPassword() {
 		vacationsPage.enter_username(VacationAppConstants.DM_USERNAME);

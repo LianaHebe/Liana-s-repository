@@ -12,25 +12,26 @@ import net.thucydides.core.pages.WebElementFacade;
 
 public class FreeDaysHistoryPageObject extends PageObject {
 
+	@FindBy(css = "input[id $='applyButton']")
+	private WebElementFacade applyButton;
+	
 	public void selectFilterItem(String filterName) {
 		List<WebElement> filtersList = getDriver().findElements(
 				By.cssSelector((".aui-choice-label")));
 		if (!filterName.trim().contentEquals("")) {
 			boolean foundOption = false;
-			for (WebElement vacatioType : filtersList) {
-				if (vacatioType.getText().equals(filterName)) {
-					System.out.print(vacatioType.getText());
+			
+			for (WebElement filter : filtersList) {
+				if (filter.getText().equals(filterName)) {
+					System.out.print(filter.getText());
 					foundOption = true;
-					vacatioType.click();
+					filter.click();
 					break;
 				}
 			}
 			Assert.assertTrue("The option was not found!", foundOption);
 		}
 	}
-
-	@FindBy(css = "input[id $='applyButton']")
-	private WebElementFacade applyButton;
 
 	public void clickApplyButton() {
 		applyButton.click();

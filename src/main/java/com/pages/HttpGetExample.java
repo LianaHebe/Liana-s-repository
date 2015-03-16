@@ -17,7 +17,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
  */
 public class HttpGetExample {
 
-	// private final String USER_AGENT = "Mozilla/5.0";//
+	// private final String USER_AGENT = "Mozilla/5.0";
 	private final String USER_AGENT = "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.20 (KHTML, like Gecko) Chrome/11.0.672.2 Safari/534.20";
 
 	public static void main(String[] args) throws Exception {

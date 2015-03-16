@@ -9,6 +9,9 @@ import net.thucydides.core.pages.WebElementFacade;
 
 public class MyRequestsPageObject extends PageObject {
 
+	@FindBy(css = "[id='_evovacation_WAR_EvoVacationportlet_applyButton']")
+	private WebElementFacade applyButton;
+
 	public void clickCheckBoxVacationType(String vacationType) {
 		WebElement element = getDriver().findElement(
 				By.cssSelector(vacationType));
@@ -26,9 +29,6 @@ public class MyRequestsPageObject extends PageObject {
 				By.cssSelector(vacationStatus));
 		element3.click();
 	}
-
-	@FindBy(css = "[id='_evovacation_WAR_EvoVacationportlet_applyButton']")
-	private WebElementFacade applyButton;
 
 	public void clickApplyButton() {
 		applyButton.click();

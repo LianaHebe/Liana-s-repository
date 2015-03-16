@@ -24,7 +24,6 @@ public class MyFreeDaysTest {
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
 
-	// @ManagedPages(defaultUrl = "http://192.168.1.68:9090/login")
 	@ManagedPages(defaultUrl = VacationAppConstants.BASE_URL)
 	public Pages pages;
 

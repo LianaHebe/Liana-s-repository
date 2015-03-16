@@ -62,14 +62,17 @@ public class NewVacationRequestTest {
 		newVacationRequestSteps.selectVacationWithoutPayment();
 	}
 
-	//@Test
+	@Test
 	public void selectSpecialVacation() {
 		newVacationRequestSteps.selectSpecialVacation();
+		newVacationRequestSteps.dropDownAndSelectItem("Marriage");
+		newVacationRequestSteps.dropDownAndSelectItem("Child birth");
+		newVacationRequestSteps.dropDownAndSelectItem("Funeral");
 		newVacationRequestSteps.dropDownAndSelectItem("Other");
 	}
 	String filter;
 	
-	@Test 
+	//@Test 
 	public void createNewVacationWithoutPaymentAndCheckInMyRequests() throws ParseException { 
 		newVacationRequestSteps.setStartDate(23, 3, 2015);
 		newVacationRequestSteps.setEndDate(24, 3, 2015);
@@ -82,19 +85,21 @@ public class NewVacationRequestTest {
 		*/
 		newVacationRequestSteps.selectVacationWithoutPayment();
 		newVacationRequestSteps.clickSaveButton();
-//		try {
-//			emailSteps.checkLastEmailSubjectAndBody("You have submitted a new Vacation Request", "You have submitted a new Vacation Request");
-//		} catch (MessagingException e) {
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		newVacationRequestSteps.withdrawSubmittedRequest();
-		loginAndNavigationSteps.goToMyRequests();
-		newVacationRequestSteps.selectFilterItem("Vacation Without Payment");
-		newVacationRequestSteps.selectFilterItem("Pending");
-		newVacationRequestSteps.clickApplyButton();
-		String[] filterArray = {"Vacation Without Payment", "Pending"};
-		newVacationRequestSteps.nextPage(filter, filterArray);
+		
+		try {
+			emailSteps.checkLastEmailSubjectAndBody("You have submitted a new Vacation Request", "You have submitted a new Vacation Request");
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		newVacationRequestSteps.withdrawSubmittedRequest();
+		
+//		loginAndNavigationSteps.goToMyRequests();
+//		newVacationRequestSteps.selectFilterItem("Vacation Without Payment");
+//		newVacationRequestSteps.selectFilterItem("Pending");
+//		newVacationRequestSteps.clickApplyButton();
+//		String[] filterArray = {"Vacation Without Payment", "Pending"};
+//		newVacationRequestSteps.nextPage(filter, filterArray);
 	}
 }
