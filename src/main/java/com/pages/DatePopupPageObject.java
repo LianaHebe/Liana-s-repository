@@ -1,12 +1,12 @@
 package com.pages;
 
 import java.text.ParseException;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.StringTokenizer;
+
+import net.thucydides.core.pages.PageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -14,10 +14,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import net.thucydides.core.annotations.findby.FindBy;
-import net.thucydides.core.pages.PageObject;
-import net.thucydides.core.pages.WebElementFacade;
 
 public class DatePopupPageObject extends PageObject {
 	private WebDriver webdriver;
@@ -76,7 +72,7 @@ public class DatePopupPageObject extends PageObject {
 				500L);
 		WebElement datePopup = waitForDatePopup
 				.until(ExpectedConditions.visibilityOfElementLocated(By
-						.xpath("//div[contains(@class,'Zebra_DatePicker') and (contains(@style,'display: block'))]")));		
+						.xpath("//div[contains(@class,'Zebra_DatePicker') and (contains(@style,'display: block'))]")));
 		WebDriverWait waitForPopupTitle = new WebDriverWait(webdriver, 5000L,
 				500L);
 		datePopupTitle = waitForPopupTitle

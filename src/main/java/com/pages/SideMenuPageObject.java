@@ -10,16 +10,12 @@ public class SideMenuPageObject extends PageObject {
 
 	@FindBy(xpath = "//a[contains(@href, 'new-request')]")
 	private WebElementFacade newVacationRequestLink;
-
 	@FindBy(xpath = "//a[contains(@href,'vacation-tracker')]")
 	private WebElementFacade vacationTracker;
-
-	@FindBy(css = "a[href*='my-requests']")
+	@FindBy(xpath = "//a[contains(text(),'My Requests')]")
 	private WebElementFacade myRequests;
-
 	@FindBy(css = "a[href*='my-free-days']")
 	private WebElementFacade myFreeDays;
-
 	@FindBy(css = "a[href*='free-days-history']")
 	private WebElement freeDaysHistory;
 

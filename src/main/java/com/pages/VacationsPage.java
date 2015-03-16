@@ -17,13 +17,10 @@ public class VacationsPage extends PageObject {
 
 	@FindBy(id = "_58_login")
 	private WebElementFacade username;
-
 	@FindBy(id = "_58_password")
 	private WebElementFacade password;
-
 	@FindBy(css = "[value='Sign In']")
 	private WebElementFacade signIn;
-
 	@FindBy(xpath = "//a[contains(@href,'http://192.168.1.68:9090/vacation')]")
 	private WebElementFacade vacationsHeaderLink;
 

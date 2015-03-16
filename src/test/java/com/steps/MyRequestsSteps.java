@@ -6,7 +6,7 @@ import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.pages.MyRequestsPage;
+import com.pages.MyRequestsPageObject;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -14,7 +14,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class MyRequestsSteps extends ScenarioSteps {
 	private WebDriver webdriver;
 
-	MyRequestsPage myRequestsPage;
+	MyRequestsPageObject myRequestsPage;
 
 	@Step
 	public void testIfEvozonLogoIsPresent() {

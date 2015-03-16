@@ -1,13 +1,12 @@
 package com.pages;
 
 import java.text.ParseException;
-import java.util.Date;
-
-import org.openqa.selenium.WebDriver;
 
 import net.thucydides.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.pages.WebElementFacade;
+
+import org.openqa.selenium.WebDriver;
 
 public class VacationTrackerMainPageObject extends PageObject {
 	private WebDriver webdriver;
