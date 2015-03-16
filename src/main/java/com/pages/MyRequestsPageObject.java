@@ -7,7 +7,7 @@ import net.thucydides.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.pages.WebElementFacade;
 
-public class MyRequestsPage extends PageObject {
+public class MyRequestsPageObject extends PageObject {
 
 	public void clickCheckBoxVacationType(String vacationType) {
 		WebElement element = getDriver().findElement(

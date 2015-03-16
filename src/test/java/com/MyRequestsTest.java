@@ -52,6 +52,7 @@ public class MyRequestsTest {
 		myRequestSteps.clickCheckBoxDaysNumber(DaysNumber);
 		myRequestSteps.clickCheckBoxVacationStatus(VacationStatus);
 		myRequestSteps.clickApplyButton();
+		
 
 	}
 }
