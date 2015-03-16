@@ -60,13 +60,8 @@ public class NewVacationRequestTest {
 	// @Test
 	public void selectVacationWithoutPayment() {
 		newVacationRequestSteps.selectVacationWithoutPayment();
-	}
-
-	//@Test
-	public void selectSpecialVacation() {
-		newVacationRequestSteps.selectSpecialVacation();
-		newVacationRequestSteps.dropDownAndSelectItem("Other");
-	}
+	}	
+	
 	String filter;
 	
 	@Test 
@@ -81,6 +76,8 @@ public class NewVacationRequestTest {
 		StringBuffer startDateStringFormatted = formatter.format(startDate, startDateStringFormatted, 0);
 		*/
 		newVacationRequestSteps.selectVacationWithoutPayment();
+//		newVacationRequestSteps.selectSpecialVacation();
+//		newVacationRequestSteps.dropDownAndSelectItem("Marriage");
 		newVacationRequestSteps.clickSaveButton();
 //		try {
 //			emailSteps.checkLastEmailSubjectAndBody("You have submitted a new Vacation Request", "You have submitted a new Vacation Request");
@@ -94,7 +91,7 @@ public class NewVacationRequestTest {
 		newVacationRequestSteps.selectFilterItem("Vacation Without Payment");
 		newVacationRequestSteps.selectFilterItem("Pending");
 		newVacationRequestSteps.clickApplyButton();
-		String[] filterArray = {"Vacation Without Payment", "Pending"};
-		newVacationRequestSteps.nextPage(filter, filterArray);
+		newVacationRequestSteps.checkFilterAndClickNextPage("Vacation Without Payment", "Type");
+		newVacationRequestSteps.checkFilterAndClickNextPage("Pending", "Status");
 	}
 }

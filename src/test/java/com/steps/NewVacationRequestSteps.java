@@ -21,7 +21,7 @@ public class NewVacationRequestSteps extends ScenarioSteps{
 	}
 	@Step
 	public void selectSpecialVacation() {
-		newVacationRequestPageObject.selectspecialVacation();
+		newVacationRequestPageObject.selectSpecialVacation();
 	}
 	@Step
 	public void dropDownAndSelectItem(String item) {
@@ -44,8 +44,8 @@ public class NewVacationRequestSteps extends ScenarioSteps{
 		newVacationRequestPageObject.selectFilterItem(filterName);
 	}
 	@Step 
-	public void  nextPage(String filter, String[] filterNames) {
-		newVacationRequestPageObject.nextPage(filter, filterNames);
+	public void checkFilterAndClickNextPage(String filter, String filterCategory) {
+		newVacationRequestPageObject.checkFilterAndClickNextPage(filter, filterCategory);
 	}
 	@Step 
 	public void  checkFilters(String filter, String filterName) {

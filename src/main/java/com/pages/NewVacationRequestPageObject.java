@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import net.thucydides.core.annotations.findby.By;
 import net.thucydides.core.annotations.findby.FindBy;
@@ -42,7 +44,7 @@ public class NewVacationRequestPageObject extends PageObject {
 		vacationWithoutPaymentRadioButton.click();
 	}
 
-	public void selectspecialVacation() {
+	public void selectSpecialVacation() {
 		specialVacationRadioButton.click();
 	}
 
@@ -93,8 +95,7 @@ public class NewVacationRequestPageObject extends PageObject {
 		}
 	}
 
-	//	public void nextPage(String filter, String filterName) { //ORIGINAL
-		public void nextPage(String filter, String[] filterNames) {
+	public void checkFilterAndClickNextPage(String filter, String filterCategory) {
 
 		String textfield = totalPages.getText().toString();
 		String[] newstring = textfield.split(" ");
@@ -114,63 +115,49 @@ public class NewVacationRequestPageObject extends PageObject {
 		int lastt1 = Integer.parseInt(last1);
 		int lastt = Integer.parseInt(last);
 
-//		checkFilters(filter, filterName); //ORIGINAL
 		while (lastt1 > lastt) {
-		for (String filterName : filterNames) {
-			checkFilters(filter, filterName);			
-		}
-
+			checkFilters(filter, filterCategory);
 			System.out.println("iN WHILE " + last1);
 			System.out.println("iN WHILE " + last);
-
 			lastt++;
-
 			nextButton.click();
-//			checkFilters(filter, filterName);
 		}
-
+		// To navigate back to first page of results:
+		clickApplyButton();
 	}
 
-	public void checkFilters(String filter, String filterName) {
-		
-		//td[contains(@id,'my.request.column.header.start.date')]/a
-		//td[contains(@id,'my.request.column.header.end.date')]/a
-		//td[contains(@id,'my.request.column.header.type')]/a
-		//td[contains(@id,'my.request.column.header.status')]/a
-		switch (filter) {
-		case "":
-			
+	public void checkFilters(String filter, String filterCategory) {
+		List<WebElement> tableCells = null;
+
+		switch (filterCategory) {
+		// Next section is pending.
+		// case "Start Date":
+		// tableCells = new WebDriverWait(getDriver(), 5L)
+		// .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By
+		// .xpath("//td[contains(@id,'my.request.column.header.start.date')]/a")));
+		// break;
+		//
+		// case "End Date":
+		// tableCells = new WebDriverWait(getDriver(), 5L)
+		// .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By
+		// .xpath("//td[contains(@id,'my.request.column.header.end.date')]/a")));
+		// break;
+
+		case "Type":
+			tableCells = new WebDriverWait(getDriver(), 5L)
+					.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By
+							.xpath("//td[contains(@id,'my.request.column.header.type')]/a")));
 			break;
 
-		default:
+		case "Status":
+			tableCells = new WebDriverWait(getDriver(), 5L)
+					.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By
+							.xpath("//td[contains(@id,'my.request.column.header.status')]/a")));
 			break;
 		}
-		
-		List<WebElement> tableCells = getDriver().findElements(
-				By.cssSelector("tr td[id*='evovacation'][class*='col-6']"));
 
-		if (!filterName.trim().contentEquals("")) {
-			if (filter.contentEquals("Vacation Status")) {
-				boolean option = false;
-
-				for (WebElement tableCell : tableCells) {
-
-					if ((tableCell.getText()
-							.contentEquals(filterName))) {
-						System.out
-								.print("!!! Vacation status displayed in the table!!! "
-										+ tableCell.getText());
-						System.out.print("Selected option :" + filterName);
-						option = true;
-
-					}
-
-				}
-
-				Assert.assertTrue("The option " + filterName
-						+ " was not found!", option);
-			}
+		for (WebElement tableCell : tableCells) {//
+			Assert.assertTrue(tableCell.getText().contentEquals(filter));
 		}
 	}
-
 }
