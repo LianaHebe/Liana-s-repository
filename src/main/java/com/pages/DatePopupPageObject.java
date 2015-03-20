@@ -26,14 +26,16 @@ public class DatePopupPageObject extends PageObject {
 	private WebElement datePopupTitle;
 	GregorianCalendar currentDateCalendar, desiredDateCalendar;
 
-	/**
-	 * Date Popup page object constructor. Each time a date is set, the popup is
-	 * closed. Once the popup is closed, to interact with it, we need to create
-	 * a new one.
-	 */
-	public DatePopupPageObject() {
-		super();
-	}
+	// /**
+	// * Date Popup page object constructor. Each time a date is set, the popup
+	// is
+	// * closed. Once the popup is closed, to interact with it, we need to
+	// create
+	// * a new one.
+	// */
+	// public DatePopupPageObject() {
+	// super();
+	// }
 
 	/**
 	 * Date Popup page object constructor. Each time a date is set, the popup is
@@ -316,9 +318,87 @@ public class DatePopupPageObject extends PageObject {
 	 * Closes the date selection popup.
 	 */
 	public void closePopup() {
+		datePopupTitle = new WebDriverWait(webdriver, 5L)
+				.until(ExpectedConditions.visibilityOfElementLocated(By
+						.xpath("//div[contains(@class,'Zebra_DatePicker') and (contains(@style,'display: block'))]/table/tbody/tr/td[contains(@class,'dp_caption')]")));
 		System.out.println("Closing the date popup.");
 		datePopupTitle.sendKeys(Keys.ESCAPE);
 	}
+
+	/**
+	 * Method to return value of selected day from DatePicker popup.
+	 * 
+	 * @return int value of selected day from DatePicker popup.
+	 */
+	public int getSelectedDay() {
+		WebElement originalDateFromPopup = new WebDriverWait(webdriver, 10L,
+				500L)
+				.until(ExpectedConditions.visibilityOfElementLocated(By
+						.xpath("//div[contains(@class, 'Zebra_DatePicker') and contains(@style, 'display: block')]/table[@class='dp_daypicker']/tbody/tr/td[contains(@class,'dp_selected')]")));
+		String oldDayOfMonth = originalDateFromPopup.getText();
+		int dayNumber = Integer.decode(oldDayOfMonth);
+		System.out.println("Selected day is: " + dayNumber + ".");
+		closePopup();
+		return dayNumber;
+	}
+
+	/**
+	 * Method to return value of selected month from DatePicker popup.
+	 * 
+	 * @return int value of selected month from DatePicker popup. Values are
+	 *         between 0 and 11, where 0 is January and 11 is December.
+	 */
+	public int getSelectedMonth() throws ParseException {
+		datePopupTitle = new WebDriverWait(webdriver, 5L)
+				.until(ExpectedConditions.visibilityOfElementLocated(By
+						.xpath("//div[contains(@class,'Zebra_DatePicker') and (contains(@style,'display: block'))]/table/tbody/tr/td[contains(@class,'dp_caption')]")));
+		SimpleDateFormat sdfSelectedMonthAndYear = new SimpleDateFormat(
+				"MMM, yyyy");
+		Date selectedDate = sdfSelectedMonthAndYear.parse(datePopupTitle
+				.getText());
+		GregorianCalendar calendar = new GregorianCalendar();
+		calendar.setTime(selectedDate);
+		int monthNumber = calendar.get(calendar.MONTH);
+		System.out.println("Selected month is: " + monthNumber + ". ");
+		System.out
+				.print("Remember that month numbers are represented from 0 to 11, where 0 is January and 11 is December.");
+		closePopup();
+		return monthNumber;
+	}
+
+	/**
+	 * Method to return value of selected year from DatePicker popup.
+	 * 
+	 * @return int value of selected year from DatePicker popup.
+	 */
+	public int getSelectedYear() throws ParseException {
+		datePopupTitle = new WebDriverWait(webdriver, 5L)
+				.until(ExpectedConditions.visibilityOfElementLocated(By
+						.xpath("//div[contains(@class,'Zebra_DatePicker') and (contains(@style,'display: block'))]/table/tbody/tr/td[contains(@class,'dp_caption')]")));
+		SimpleDateFormat sdfSelectedMonthAndYear = new SimpleDateFormat(
+				"MMM, yyyy");
+		Date selectedDate = sdfSelectedMonthAndYear.parse(datePopupTitle
+				.getText());
+		GregorianCalendar calendar = new GregorianCalendar();
+		calendar.setTime(selectedDate);
+		int yearNumber = calendar.get(calendar.YEAR);
+		System.out.println("Selected year is: " + yearNumber + ".");
+		closePopup();
+		return yearNumber;
+
+	}
+
+	// public int getEndDay(){
+	//
+	// }
+	//
+	// public int getEndMonth(){
+	//
+	// }
+	//
+	// public int getEndYear(){
+	//
+	// }
 
 	/*
 	 * public Date getDate(){
