@@ -51,15 +51,14 @@ public class MailTest {
 	public void checkIfMailWasReceived() throws ParseException,
 			MessagingException, IOException {
 
-		newVacationRequestSteps.setStartDate(23, 3, 2015);
-		newVacationRequestSteps.setEndDate(24, 3, 2015);
+		newVacationRequestSteps.setStartDate(5, 4, 2015);
+		newVacationRequestSteps.setEndDate(6, 4, 2015);
 		newVacationRequestSteps.selectVacationWithoutPayment();
 		newVacationRequestSteps.clickSaveButton();
 
-		String startDate = "23/04/2015";
-		String endDate = "24/04/2015";
-		String body = "Your holiday interval is: <strong>" + startDate + " - "
-				+ endDate + "</strong>.";
+		String startDate = "5/05/2015";
+		String endDate = "6/05/2015";
+		String body = "You have submitted a new Vacation Request.";
 
 		emailSteps.checkLastEmailSubjectAndBody(
 				"You have submitted a new Vacation Request", body);

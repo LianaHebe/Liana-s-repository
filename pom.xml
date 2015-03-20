@@ -15,7 +15,7 @@
         <thucydides.version>0.9.275</thucydides.version>
         <webdriver.driver>chrome</webdriver.driver>
 		<!-- <webdriver.chrome.driver>drivers/chromedriver.exe</webdriver.chrome.driver>-->
-		<webdriver.chrome.driver>C:\Users\lianahebe\Desktop\chromedriver.exe</webdriver.chrome.driver>
+		<webdriver.chrome.driver>D:\chromedriver.exe</webdriver.chrome.driver>
 		
   <!--       <webdriver.driver>firefox</webdriver.driver> -->
     </properties>

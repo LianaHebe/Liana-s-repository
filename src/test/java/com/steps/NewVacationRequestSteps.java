@@ -21,7 +21,7 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 
 	@Step
 	public void selectSpecialVacation() {
-		newVacationRequestPageObject.selectspecialVacation();
+		newVacationRequestPageObject.selectSpecialVacation();
 	}
 
 	@Step
@@ -51,8 +51,9 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void nextPage(String filter, String[] filterNames) {
-		newVacationRequestPageObject.nextPage(filter, filterNames);
+	public void checkFilterAndClickNextPage(String filter, String filterCategory) {
+		newVacationRequestPageObject.checkFilterAndClickNextPage(filter,
+				filterCategory);
 	}
 
 	@Step
