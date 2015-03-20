@@ -8,6 +8,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.text.ParseException;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -45,7 +46,7 @@ public class VacationTrackerTest {
 	// These parameters are extracted from dateSet.csv.
 	String dayString, monthString, yearString;
 
-//	@Before
+	@Before
 	public void signInUsernameAndPasswordAndGoToNewVacationRequest() {
 		loginAndNavigationSteps.is_the_home_page();
 		loginAndNavigationSteps.signInAsDM();
@@ -54,82 +55,22 @@ public class VacationTrackerTest {
 		webdriver.manage().window().maximize();
 	}
 
-	// @Test
-	public void testStartDateLaterThanEndDate() {
-		// Decode the parameters from the dateSet.csv file.
-		int dayInt = Integer.decode(dayString).intValue();
-		int monthInt = Integer.decode(monthString).intValue();
-		int yearInt = Integer.decode(yearString).intValue();
-		// Set the date according to the parameters from dateSet.csv.
-		vacationTrackerSteps.setStartDate(dayInt, monthInt, yearInt);
-		try {
-			Thread.sleep(3000L);
-		} catch (Exception e) {
-		}
-	}
-
 	@Test
-	public void unrelatedHTTPRequestTest() {
-		String url = "http://www.google.com/search";
-		String charset = "UTF-8"; // Or in Java 7 and later, use the constant:
-									// java.nio.charset.StandardCharsets.UTF_8.name()
-		String param1 = "pretty";
-		String param2 = "girls";
-		String query = null;
-		URLConnection connection = null;
-		InputStream response = null;
-		int readData=-1;
+	public void testStartDateLaterThanEndDate() throws ParseException {
+		// Decode the parameters from the dateSet.csv file.
+//		int dayInt = Integer.decode(dayString).intValue();
+//		int monthInt = Integer.decode(monthString).intValue();
+//		int yearInt = Integer.decode(yearString).intValue();
+		// Set the date according to the parameters from dateSet.csv.
+		int startDay=12;
+		int endDay = 11;
+		int startMonth = 3;
+		int endMonth = 3;
+		int startYear = 2016;
+		int endYear = 2016;
 		
-		try {
-			query = String.format("%s+%s",
-					URLEncoder.encode(param1, charset),
-					URLEncoder.encode(param2, charset));
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			connection = new URL(url + "?q=" + query).openConnection();
-//			connection = new URL(url + param1 + "%20" + param2).openConnection();
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		connection.setRequestProperty("Accept-Charset", charset);
-		try {
-			response = connection.getInputStream();
-		} catch (IOException e) {		
-			e.printStackTrace();
-		}
-		
-		try {
-			response = new URL(url).openStream();
-		} catch (MalformedURLException e) {		
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		System.out.println();
-		BufferedInputStream bufferedInputStream = new BufferedInputStream(response);
-		do {
-			try {
-				readData=bufferedInputStream.read();
-				System.out.print(readData);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}			
-		} while (readData!=-1);
-		
-		try {
-			bufferedInputStream.close();
-			response.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-//		WebDriver driverForHTTPReq = new FirefoxDriver();
-
-	}
+		vacationTrackerSteps.setStartDate(startDay, startMonth, startYear);
+		vacationTrackerSteps.setEndDate(endDay, endMonth, endYear);
+		vacationTrackerSteps.checkIfEndDateEquals(startDay, startMonth, startYear);				
+	}	
 }
